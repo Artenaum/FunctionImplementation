@@ -16,12 +16,30 @@ const myFilter = (arr, callback) => {
 	return newArr
 }
 
+const reduce = (arr, callback, init = arr[0]) => {
+	if (arr.constructor !== Array || typeof callback !== 'function') {
+		return "Incorrect arguments"
+	}
+
+	let result = init
+
+	for (i = 0; i < arr.length; i++) {
+		result = callback(result, arr[i])
+	}
+
+	return result
+}
+
 const num1 = 1
 const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const arr2 = myFilter(arr1, (elem) => elem >= 5)
 const arr3 = myFilter(arr1, arr2)
 const num2 = myFilter(num1, (elem) => elem >= 5)
+
+const sum = reduce(arr1, (acc, item) => acc + item, 0)
+
+console.log('Sum:', sum)
 
 console.log('Array 1:', arr1)
 console.log('Array 2:', arr2)
