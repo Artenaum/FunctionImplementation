@@ -16,6 +16,16 @@ const myFilter = (arr, callback) => {
 	return newArr
 }
 
+const myForEach = (arr, callback) => {
+	if (arr.constructor !== Array || typeof callback !== 'function') {
+		return
+	}
+
+	for (i = 0; i < arr.length; i++) {
+		callback(arr[i], i, arr)
+	}
+}
+
 const num1 = 1
 const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -27,3 +37,9 @@ console.log('Array 1:', arr1)
 console.log('Array 2:', arr2)
 console.log('Array 3:', arr3)
 console.log('Number 2:', num2)
+
+myForEach(arr2, (item, index, arr) => {
+	console.log('Item:', item)
+	console.log('Index:', index)
+	console.log('Array:', arr)
+})
