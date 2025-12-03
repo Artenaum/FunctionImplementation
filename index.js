@@ -1,3 +1,18 @@
+const map = (arr, callback) => {
+	if (arr.constructor !== Array || typeof callback !== 'function') {
+		return "Incorrect arguments"
+	}
+
+	let newArr = []
+
+	for (i = 0; i < arr.length; i++) {
+		const newElem = callback(arr[i])
+		newArr.push(newElem)
+	}
+
+	return newArr
+}
+
 const myFilter = (arr, callback) => {
 	let newArr = []
 
@@ -47,6 +62,8 @@ const arr2 = myFilter(arr1, (elem) => elem >= 5)
 const arr3 = myFilter(arr1, arr2)
 const num2 = myFilter(num1, (elem) => elem >= 5)
 
+const arr4 = map(arr1, (elem) => elem * 2)
+
 const sum = reduce(arr1, (acc, item) => acc + item, 0)
 
 console.log('Sum:', sum)
@@ -54,6 +71,7 @@ console.log('Sum:', sum)
 console.log('Array 1:', arr1)
 console.log('Array 2:', arr2)
 console.log('Array 3:', arr3)
+console.log('Array 4:', arr4)
 console.log('Number 2:', num2)
 
 myForEach(arr2, (item, index, arr) => {
